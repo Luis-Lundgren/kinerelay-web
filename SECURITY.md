@@ -2,7 +2,7 @@
 
 ## Reporting Security Vulnerabilities
 
-If you discover a security vulnerability in the Embodex Web platform or Motion Exchange, please report it privately:
+If you discover a security vulnerability in the KineRelay Web platform or KineRelay Exchange, please report it privately:
 
 - **Security Contact:** Luis Lundgren
 - **Email:** `lundgrenluis@gmail.com`

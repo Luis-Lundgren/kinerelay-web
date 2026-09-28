@@ -1,6 +1,6 @@
 # Third-Party Notices & Attribution
 
-Embodex Web Application / Motion Exchange incorporates or depends upon open-source software packages under permissive licenses.
+KineRelay Web Application / KineRelay Exchange incorporates or depends upon open-source software packages under permissive licenses.
 
 ---
 

@@ -1,6 +1,6 @@
-# Contributing to Embodex Web
+# Contributing to KineRelay Web
 
-Thank you for your interest in contributing to Embodex Web and the Motion Exchange!
+Thank you for your interest in contributing to KineRelay Web and KineRelay Exchange!
 
 ---
 
@@ -14,8 +14,8 @@ Please adhere to our [Code of Conduct](CODE_OF_CONDUCT.md) in all project intera
 
 1. Fork and clone the repository:
    ```bash
-   git clone https://github.com/Luis-Lundgren/embodex-web.git
-   cd embodex-web
+   git clone https://github.com/Luis-Lundgren/kinerelay-web.git
+   cd kinerelay-web
    ```
 
 2. Install dependencies:

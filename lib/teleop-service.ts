@@ -1,9 +1,9 @@
 import crypto from 'crypto';
 
 /**
- * Server-side teleoperation service layer for Embodex Web.
- * Securely communicates with the Embodex Teleop robot backend.
- * Permanent credentials (EMBODEX_API_TOKEN, EMBODEX_WS_TICKET_SECRET)
+ * Server-side teleoperation service layer for KineRelay Web.
+ * Securely communicates with the KineRelay Teleop robot backend.
+ * Permanent credentials (KINERELAY_API_TOKEN, KINERELAY_WS_TICKET_SECRET)
  * are NEVER exposed to browser code.
  */
 
@@ -16,25 +16,29 @@ export interface WsTicketPayload {
 }
 
 export function getTeleopHttpUrl(): string {
-    const url = process.env.EMBODEX_TELEOP_HTTP_URL ||
+    const url = process.env.KINERELAY_TELEOP_HTTP_URL ||
+                process.env.EMBODEX_TELEOP_HTTP_URL ||
+                process.env.NEXT_PUBLIC_KINERELAY_TELEOP_HTTP_URL ||
                 process.env.NEXT_PUBLIC_EMBODEX_TELEOP_HTTP_URL ||
                 'http://localhost:8500';
     return url.replace(/\/$/, '');
 }
 
 export function getTeleopWsUrl(): string {
-    const url = process.env.NEXT_PUBLIC_EMBODEX_TELEOP_WS_URL ||
+    const url = process.env.KINERELAY_TELEOP_WS_URL ||
+                process.env.NEXT_PUBLIC_KINERELAY_TELEOP_WS_URL ||
+                process.env.NEXT_PUBLIC_EMBODEX_TELEOP_WS_URL ||
                 process.env.EMBODEX_TELEOP_WS_URL ||
                 'ws://localhost:8500/ws';
     return url;
 }
 
 export function getApiToken(): string | undefined {
-    return process.env.EMBODEX_API_TOKEN;
+    return process.env.KINERELAY_API_TOKEN || process.env.EMBODEX_API_TOKEN;
 }
 
 export function getWsTicketSecret(): string | undefined {
-    return process.env.EMBODEX_WS_TICKET_SECRET;
+    return process.env.KINERELAY_WS_TICKET_SECRET || process.env.EMBODEX_WS_TICKET_SECRET;
 }
 
 /**
@@ -47,7 +51,7 @@ export function createWsTicket(
 ): string {
     const secret = getWsTicketSecret();
     if (!secret) {
-        throw new Error('EMBODEX_WS_TICKET_SECRET is not configured on the web server');
+        throw new Error('KINERELAY_WS_TICKET_SECRET is not configured on the web server');
     }
 
     const roles = user.roles || [];
@@ -79,7 +83,7 @@ export function createWsTicket(
 }
 
 /**
- * Proxy an HTTP request to the teleop backend attaching the server-side EMBODEX_API_TOKEN.
+ * Proxy an HTTP request to the teleop backend attaching the server-side KINERELAY_API_TOKEN.
  */
 export async function proxyTeleopRequest(
     path: string,

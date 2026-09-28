@@ -100,9 +100,9 @@ export default function GalleryViewer({ datasets }: GalleryViewerProps) {
             {/* Professional Top Header */}
             <header className="h-14 shrink-0 border-b border-white/5 flex items-center justify-between px-4 md:px-6 bg-slate-900 shadow-2xl z-40 relative">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white italic shadow-lg shadow-blue-500/20">SO</div>
+                    <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-black text-white italic shadow-lg shadow-blue-500/20">KR</div>
                     <h1 className="text-[10px] md:text-[12px] font-black tracking-[0.1em] md:tracking-[0.2em] uppercase text-blue-400">
-                        SO-100 <span className="text-white">Motion Exchange</span>
+                        KineRelay <span className="text-white">Exchange</span>
                     </h1>
                 </div>
                 <nav className="flex items-center gap-4 md:gap-8">

@@ -9,7 +9,7 @@ export default function LandingNav() {
         <nav className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-[#141414]/95 backdrop-blur-md border-b border-white/5 px-6 md:px-12 flex items-center justify-between text-white">
             {/* Left side: Branding */}
             <div className="flex items-center">
-                <span className="font-semibold text-xl tracking-tight text-gray-100">SO-100 Motion Exchange</span>
+                <span className="font-semibold text-xl tracking-tight text-gray-100">KineRelay</span>
             </div>
 
             {/* Center: Main Links */}

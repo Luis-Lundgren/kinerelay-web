@@ -44,7 +44,7 @@ export default function OnboardingForm() {
 
     return (
         <div className="w-full max-w-4xl mx-auto p-6">
-            <h1 className="text-3xl font-bold mb-2 text-white text-center">Welcome to Motion Exchange</h1>
+            <h1 className="text-3xl font-bold mb-2 text-white text-center">Welcome to KineRelay Exchange</h1>
             <p className="text-slate-400 text-center mb-12">Select your primary role to get started.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">

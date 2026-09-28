@@ -67,7 +67,7 @@ export default async function LandingPage() {
                                     LLMs had the internet. Robotics has nothing equivalent. Every <strong className="text-gray-200">lab</strong> collects its own teleoperation data, in isolation, using expensive hardware and in-person <strong className="text-gray-200">operators</strong>.
                                 </p>
                                 <p className="text-gray-400 text-lg leading-relaxed">
-                                    The result: the best robot learning algorithms are starved of the data they need. Embodex changes the equation. A shared motion exchange where every dataset is available to every researcher. Collect once, train everywhere.
+                                    The result: the best robot learning algorithms are starved of the data they need. KineRelay changes the equation. A shared motion exchange where every dataset is available to every researcher. Collect once, train everywhere.
                                 </p>
                             </div>
                             <div className="grid grid-cols-2 gap-4">

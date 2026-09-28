@@ -31,7 +31,7 @@ export default function LoginPage() {
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-md shadow-2xl">
                     <div className="text-center mb-8">
                         <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-                            Motion Exchange
+                            KineRelay Exchange
                         </h1>
                         <p className="text-slate-400 mt-2">Sign in to continue</p>
                     </div>

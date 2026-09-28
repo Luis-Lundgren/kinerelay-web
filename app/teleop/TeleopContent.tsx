@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useTeleopClient } from "@/components/Teleop/TeleopClient";
 import { TeleopControls } from "@/components/Teleop/Controls";
 import SessionReview from "@/components/Teleop/SessionReview";
-import { EMBODEX_TELEOP_WS_URL } from "@/lib/config";
+import { KINERELAY_TELEOP_WS_URL } from "@/lib/config";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -98,7 +98,7 @@ export default function TeleopContent() {
         wasRecording.current = status.recording;
     }, [status.recording]);
 
-    const getWsUrl = useCallback(() => EMBODEX_TELEOP_WS_URL, []);
+    const getWsUrl = useCallback(() => KINERELAY_TELEOP_WS_URL, []);
 
     const fetchStatus = useCallback(async () => {
         try {

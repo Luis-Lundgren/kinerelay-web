@@ -9,9 +9,9 @@ interface TeleopClientProps {
     url?: string;
 }
 
-import { EMBODEX_TELEOP_WS_URL } from '@/lib/config';
+import { KINERELAY_TELEOP_WS_URL } from '@/lib/config';
 
-export function useTeleopClient({ onRobotState, onStatusChange, onRecordingStopped, url = EMBODEX_TELEOP_WS_URL }: TeleopClientProps) {
+export function useTeleopClient({ onRobotState, onStatusChange, onRecordingStopped, url = KINERELAY_TELEOP_WS_URL }: TeleopClientProps) {
     const ws = useRef<WebSocket | null>(null);
     const [isConnected, setIsConnected] = useState(false);
     const [lastMessageTime, setLastMessageTime] = useState(0);
@@ -49,21 +49,21 @@ export function useTeleopClient({ onRobotState, onStatusChange, onRecordingStopp
             targetWsUrl = targetWsUrl.replace("localhost", host).replace("127.0.0.1", host);
         }
 
-        console.log(`Connecting to Embodex teleop backend at ${targetWsUrl}...`);
+        console.log(`Connecting to KineRelay teleop backend at ${targetWsUrl}...`);
 
         try {
-            // 2. Connect using subprotocol authentication: embodex-ticket.<ticket>
-            const protocols = ticket ? [`embodex-ticket.${ticket}`] : undefined;
+            // 2. Connect using subprotocol authentication: kinerelay-ticket.<ticket>
+            const protocols = ticket ? [`kinerelay-ticket.${ticket}`] : undefined;
             ws.current = protocols ? new WebSocket(targetWsUrl, protocols) : new WebSocket(targetWsUrl);
 
             ws.current.onopen = () => {
-                console.log("Connected to Embodex teleop backend");
+                console.log("Connected to KineRelay teleop backend");
                 setIsConnected(true);
                 onStatusChange(true);
             };
 
             ws.current.onclose = (event) => {
-                console.log(`Disconnected from Embodex teleop backend (code: ${event.code})`);
+                console.log(`Disconnected from KineRelay teleop backend (code: ${event.code})`);
                 setIsConnected(false);
                 onStatusChange(false);
                 ws.current = null;

@@ -36,7 +36,7 @@ export async function POST() {
         }
 
         if (!getWsTicketSecret()) {
-            console.error('[ws-ticket] EMBODEX_WS_TICKET_SECRET is not configured on the web server');
+            console.error('[ws-ticket] KINERELAY_WS_TICKET_SECRET is not configured on the web server');
             return NextResponse.json(
                 { error: 'Server misconfiguration: WebSocket ticketing secret not configured' },
                 { status: 500 }

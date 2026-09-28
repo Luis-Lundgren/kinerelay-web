@@ -4,9 +4,9 @@ import http from 'node:http';
 import crypto from 'node:crypto';
 
 // Setup environment before importing handlers
-process.env.EMBODEX_API_TOKEN = 'test-server-api-token-987';
-process.env.EMBODEX_WS_TICKET_SECRET = 'test-ws-ticket-secret-654321';
-process.env.NEXT_PUBLIC_EMBODEX_TELEOP_WS_URL = 'ws://localhost:8500/ws';
+process.env.KINERELAY_API_TOKEN = 'test-server-api-token-987';
+process.env.KINERELAY_WS_TICKET_SECRET = 'test-ws-ticket-secret-654321';
+process.env.NEXT_PUBLIC_KINERELAY_TELEOP_WS_URL = 'ws://localhost:8500/ws';
 
 import { createWsTicket, proxyTeleopRequest } from '../lib/teleop-service';
 import { authService } from '../lib/auth';
@@ -14,7 +14,7 @@ import { POST as handleWsTicket } from '../app/api/teleop/ws-ticket/route';
 import { GET as handleControlGet, POST as handleControlPost } from '../app/api/teleop/control/[action]/route';
 import { GET as handleSessionsGet } from '../app/api/teleop/sessions/route';
 
-describe('Embodex Web Security & Integration Tests', () => {
+describe('KineRelay Web Security & Integration Tests', () => {
     let mockBackendServer: http.Server;
     let mockBackendPort: number;
     let lastBackendRequest: {
@@ -66,7 +66,7 @@ describe('Embodex Web Security & Integration Tests', () => {
             mockBackendServer.listen(0, '127.0.0.1', () => {
                 const addr = mockBackendServer.address() as any;
                 mockBackendPort = addr.port;
-                process.env.EMBODEX_TELEOP_HTTP_URL = `http://127.0.0.1:${mockBackendPort}`;
+                process.env.KINERELAY_TELEOP_HTTP_URL = `http://127.0.0.1:${mockBackendPort}`;
                 resolve();
             });
         });
@@ -100,7 +100,7 @@ describe('Embodex Web Security & Integration Tests', () => {
 
         // Verify cryptographic HMAC signature
         const expectedSig = crypto
-            .createHmac('sha256', process.env.EMBODEX_WS_TICKET_SECRET!)
+            .createHmac('sha256', process.env.KINERELAY_WS_TICKET_SECRET!)
             .update(`${hB64}.${pB64}`)
             .digest('base64url');
         assert.equal(sigB64, expectedSig, 'Signature must match HMAC-SHA256');
@@ -257,14 +257,14 @@ describe('Embodex Web Security & Integration Tests', () => {
         // Verify that the teleop backend received the server-side bearer token
         assert.equal(
             lastBackendRequest.headers?.['authorization'],
-            `Bearer ${process.env.EMBODEX_API_TOKEN}`
+            `Bearer ${process.env.KINERELAY_API_TOKEN}`
         );
 
-        // Verify that response to browser does NOT leak EMBODEX_API_TOKEN
+        // Verify that response to browser does NOT leak KINERELAY_API_TOKEN
         const json = await res.json();
         assert.equal(json.success, true);
         const serialized = JSON.stringify(json);
-        assert.ok(!serialized.includes(process.env.EMBODEX_API_TOKEN!));
+        assert.ok(!serialized.includes(process.env.KINERELAY_API_TOKEN!));
     });
 
     it('control proxy: non-admin attempting restart -> 403', async () => {
@@ -332,7 +332,7 @@ describe('Embodex Web Security & Integration Tests', () => {
         assert.ok(Array.isArray(json.joint_positions));
         assert.equal(
             lastBackendRequest.headers?.['authorization'],
-            `Bearer ${process.env.EMBODEX_API_TOKEN}`
+            `Bearer ${process.env.KINERELAY_API_TOKEN}`
         );
     });
 
